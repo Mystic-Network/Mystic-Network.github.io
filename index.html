@@ -89,6 +89,45 @@
             margin-right: 5px; /* Space between icon and text */
         }
 
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 0 5px 2px rgba(4, 110, 112, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 15px 4px rgba(4, 110, 112, 0.3);
+            }
+            100% {
+                box-shadow: 0 0 5px 2px rgba(4, 110, 112, 0.5);
+            }
+        }
+
+        nav a.new-button {
+            background-color: #046e70; /* Match button color */
+            color: white;
+            padding: 10px 15px; /* Ensure padding matches */
+            border: none;
+            border-radius: 20px; /* Ensure border radius matches */
+            cursor: pointer;
+            font-size: 1em; /* Ensure font size matches */
+            line-height: 1.5; /* Adjust line-height to align text properly */
+            text-align: center;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            text-decoration: none; /* Remove underline from links */
+            animation: pulseGlow 2s infinite; /* Add pulsing glow animation */
+        }
+
+        nav a.new-button:hover {
+            background-color: #035153; /* Darker color on hover */
+            animation: none; /* Stop pulsing glow animation on hover */
+            box-shadow: none; /* Remove glow on hover */
+        }
+
+        nav a.new-button i {
+            margin-right: 5px; /* Space between icon and text */
+        }
+
         .container {
             padding: 20px;
         }
@@ -375,7 +414,7 @@
         <nav>
             <a href="https://mnmc.fun/" rel="noopener"><i class="fa-solid fa-arrow-left-long"></i> Return to MNMC</a>
             <a href="https://mnmc.fun/discord" rel="noopener" target="_blank"><i class="fab fa-discord"></i> Discord</a>
-            <a href="/install" rel="noopener"><i class="fas fa-book"></i> Install Guide</a>
+            <a href="/install" class="new-button" rel="noopener"><i class="fas fa-book"></i> Install Guide</a>
         </nav>
     </header>    
     <div class="container">
