@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mystic Launcher</title>
+    <link rel="icon" href="https://i.imgur.com/FvDhQ0O.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="https://i.imgur.com/FvDhQ0O.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #161616;
+            color: #f0f0f0;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header, .intro, footer {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        header {
+            background-color: rgba(30, 30, 30, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        header img {
+            height: 70px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px; /* Ensure buttons are evenly spaced */
+        }
+
+        nav a {
+            background-color: #046e70; /* Match button color */
+            color: white;
+            padding: 10px 15px; /* Ensure padding matches */
+            border: none;
+            border-radius: 20px; /* Ensure border radius matches */
+            cursor: pointer;
+            font-size: 1em; /* Ensure font size matches */
+            line-height: 1.5; /* Adjust line-height to align text properly */
+            text-align: center;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.3s;
+            text-decoration: none; /* Remove underline from links */
+        }
+
+        nav a:hover {
+            background-color: #035153; /* Darker color on hover */
+        }
+
+        nav a i {
+            margin-right: 5px; /* Space between icon and text */
+        }
+
+        .container {
+            padding: 20px;
+        }
+        /* Define the keyframes for the pulse animation */
+        @keyframes pulse-glow {
+            0% {
+                box-shadow: 0 0 15px rgba(0, 66, 132, 0.4); /* Less intense initial glow */
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(0, 66, 132, 0.7); /* More intense glow */
+            }
+            100% {
+                box-shadow: 0 0 15px rgba(0, 66, 132, 0.4); /* Back to less intense glow */
+            }
+        }
+
+        /* Style for the .intro element */
+        .intro {
+            position: relative;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #fff;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(39, 39, 39, 0.3); /* Constant outer glow effect */
+        }
+
+        .intro::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url('https://i.imgur.com/wWSc0qu.jpeg') no-repeat center center;
+            background-size: cover;
+            filter: blur(1.5px);
+            z-index: -2;
+            border-radius: 12px; /* Ensures the blur effect follows the border radius */
+        }
+
+        .intro::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.4); /* Black overlay with 0.3 transparency */
+            z-index: -1;
+            border-radius: 12px; /* Ensures the overlay follows the border radius */
+        }
+
+
+        /* Keyframes for the pulse-glow animation */
+        @keyframes pulse-glow {
+            0% {
+                box-shadow: 0 0 15px rgba(0, 66, 132, 0.8);
+            }
+            50% {
+                box-shadow: 0 0 25px rgba(0, 66, 132, 1);
+            }
+            100% {
+                box-shadow: 0 0 15px rgba(0, 66, 132, 0.8);
+            }
+        }
+
+        .intro h1 {
+            margin: 0 0 10px;
+            font-size: 2.5em;
+            font-weight: 800;
+            color: #fff; /* Ensure text color is white for visibility */
+            text-shadow: 0 0 10px rgba(239, 239, 239, 0.3); /* Less intense initial glow */
+            animation: pulse-header 5s infinite; /* Slower pulse animation with a 5-second duration */
+        }
+        .intro p {
+            font-size: 1.1em;
+            line-height: 0.5;
+        }
+        .intro a {
+            display: inline-flex; /* Align icon and text horizontally */
+            align-items: center; /* Center align items vertically */
+            justify-content: center; /* Center text and icon */
+            width: 160px; /* Adjusted width for a shorter length */
+            height: 40px; /* Adjusted height to be ~1/4 shorter */
+            padding: 0; /* Remove padding as width and height are fixed */
+            border-radius: 12px;
+            text-decoration: none;
+            color: #fff;
+            background: rgba(3, 159, 161, 0.8); /* Slightly transparent background color */
+            font-family: 'Roboto', sans-serif; /* Apply Roboto font */
+            font-weight: bold; /* Make font bold */
+            position: relative; /* For shadow effect */
+            transition: background-color 0.3s, box-shadow 0.3s; /* Transition for background color and shadow */
+            margin: 0 10px; /* Space between buttons */
+        }
+
+        .intro a i {
+            margin-right: 8px; /* Space between icon and text */
+            font-size: 18px; /* Adjust icon size */
+        }
+
+        .intro a span {
+            display: inline-block;
+            position: relative; /* For shadow effect */
+            color: #fff; /* Text color */
+        }
+
+        .intro a span::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px; /* Adjusted for shadow position */
+            width: 100%;
+            height: 2px; /* Thickness of the shadow */
+            background: rgba(3, 159, 161, 0.5); /* Slightly darker color than the button */
+            z-index: -1;
+            transform: translateY(2px); /* Offset shadow */
+        }
+
+        .intro a:hover {
+            background-color: rgba(3, 159, 161, 0.9); /* Slightly darker background color on hover */
+            color: #e0e0e0; /* Slightly lighter color for text on hover */
+            box-shadow: 0 0 8px 2px rgba(3, 159, 161, 0.6); /* Slight glow around the button on hover */
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+        section h2 {
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: -20px;
+        }
+        section p {
+            font-size: 1.3em;
+            text-align: center;
+            color: #7d7d7d;
+            margin-bottom: 45px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .grid-item {
+            background-color: #2c2c2c;
+            border-radius: 12px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .grid-item img {
+            width: 100%;
+            position: relative;
+            margin-bottom: -10px;
+            z-index: 2;
+        }
+
+        .grid-item a {
+            margin: 5px;
+            padding: 10px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #027182;
+            border: 2px solid #027182;
+            display: inline-block;
+            transition: color 0.3s, box-shadow 0.3s;
+        }
+
+        .grid-item a:hover {
+            color: #d3d3d3;
+            box-shadow: 0 0 10px 2px currentColor;
+        }
+
+
+        .grid-item h3 {
+            font-size: 1.5em;
+            margin-bottom: -7px;
+        }
+
+        .grid-item p {
+            font-size: 1em;
+            color: #d3d3d3;
+            margin-bottom: 20px;
+        }
+
+        .unreleased {
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes pulse {
+            0% {
+                text-shadow: 0 0 10px rgba(130, 137, 161, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(130, 137, 161, 0.8);
+            }
+            100% {
+                text-shadow: 0 0 10px rgba(130, 137, 161, 0.5);
+            }
+        }
+
+        .soon-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2.5em;
+            color: white;
+            text-shadow: 0 0 10px rgba(130, 137, 161, 0.5); /* Adjusted for animation */
+            z-index: 2;
+            animation: pulse 1.5s infinite; /* Apply pulse animation */
+        }
+        .blur-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(54, 54, 54, 0.6); /* White overlay with some transparency */
+            backdrop-filter: blur(10px); /* Apply heavy blur */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+            font-size: 1.2em;
+            z-index: 1;
+        }
+
+        footer {
+            background-color: rgba(30, 30, 30, 0.8);
+            padding: 20px;
+            text-align: center;
+            border-top: 2px solid #024882;
+        }
+        footer img {
+            height: 60px;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: transparent;
+            color: #024882;
+            padding: 10px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            display: none;
+            transition: color 0.3s;
+            z-index: 20000;
+        }
+        .back-to-top:hover {
+            color: #d3d3d3;
+        }
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            nav select {
+                margin-top: 10px;
+            }
+            nav a {
+                margin: 5px 0;
+            }
+        }
+        @media (max-width: 1024px) {
+            .grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://camo.githubusercontent.com/20600217d0583b8bedd3afe7da40cefe131089f9413881f0420963cb080a2a69/68747470733a2f2f692e696d6775722e636f6d2f54793131386c332e706e67" alt="KFX Development Logo">
+        <nav>
+            <a href="https://mnmc.fun/" rel="noopener"><i class="fa-solid fa-arrow-left-long"></i> Return to MNMC</a>
+            <a href="https://mnmc.fun/discord" rel="noopener" target="_blank"><i class="fab fa-discord"></i> Discord</a>
+            <a href="/install" rel="noopener"><i class="fas fa-book"></i> Install Guide</a>
+        </nav>
+    </header>    
+    <div class="container">
+        <div class="intro">
+            <h1><strong>Mystic</strong> Launcher</h1>
+            <p style="color: #cecece; margin-top: -2px; line-height: 1.2;">The best Minecraft launcher &ndash; with Mod support and countless optimizations.<br>Designed to improve your experience on <strong>Mystic Network</strong> & Affiliates.</p>
+            <p style="margin-top: 30px;">Choose a version for your Operating System:</p>
+            <!-- Windows Button -->
+            <a href="#" class="intro windows">
+                <i class="fab fa-windows"></i>
+                <span>Windows</span>
+            </a>
+
+            <!-- MacOS Button -->
+            <a href="#" class="intro macos">
+                <i class="fab fa-apple"></i>
+                <span>MacOS</span>
+            </a>
+
+            <!-- Linux Button -->
+            <a href="#" class="intro linux">
+                <i class="fab fa-linux"></i>
+                <span>Linux</span>
+            </a>
+        </div>
+        <section id="features">
+            <h2>Features</h2>
+            <p>See what we have to offer in comparison with<br>traditional Minecraft launchers.</p>
+            <div class="grid">
+                <div class="grid-item">
+                    <h3><i class="fa-solid fa-rocket"></i> Optimized Experience</h3>
+                    <p style="color:#d1d1d1">Boost your FPS &ndash; supercharge Minecraft!</p>
+                    <p style="color:#b4b4b4">Thanks to additional modifications, we were able to implement various different optimizations to make Minecraft run smoother on almost any computer.</p>
+                </div>
+                <div class="grid-item">
+                    <h3><i class="fa-solid fa-plus"></i> Built&ndash;in Mods</h3>
+                    <p style="color:#d1d1d1">Get the most out of Minecraft with Mods!</p>
+                    <p style="color:#b4b4b4">There are dozens of mods, some of them being toggleable. Simply pick the mods you like, disable the ones you don't &ndash; and launch the game!</p>
+                </div>
+                <div class="grid-item">
+                    <h3><i class="fa-solid fa-unlock"></i> Free to Play</h3>
+                    <p style="color:#d1d1d1">Who needs to pay to play? You don't.</p>
+                    <p style="color:#b4b4b4">The Launcher natively supports Microsoft and Offline accounts. This means that you don't have to own a purchased copy of Minecraft to play!</p>
+                </div>
+                <div class="grid-item">
+                    <h3><i class="fa-solid fa-hand-sparkles"></i> Clean Interface</h3>
+                    <p style="color:#d1d1d1">Simple and easily understandable to all.</p>
+                    <p style="color:#b4b4b4">The interface is modern and simple &ndash; even your 7 year-old cousin can take a grasp it! We made sure it doesn't contain any unnecessary features.</p>
+                </div>
+                <div class="grid-item">
+                    <h3><i class="fa-solid fa-globe"></i> Multiple Languages</h3>
+                    <p style="color:#d1d1d1">We probably have your language, too!</p>
+                    <p style="color:#b4b4b4">Our amazing community has provided many different localizations over time. You can easily change your Launcher language in settings.</p>
+                </div>
+                <div class="grid-item">
+                    <h3><i class="fa-solid fa-robot"></i> Smart Integration</h3>
+                    <p style="color:#d1d1d1">Automatically integrates into partnered servers.</p>
+                    <p style="color:#b4b4b4">The Launcher communicates with partnered servers and automates processes. Forget about logging in, unnecessary waiting time, and more!</p>
+                </div>
+            </div>
+        </section>
+        <section id="requirements">
+            <h2>Requirements</h2>
+            <p>See what system requirements must be met<br>to successfully run the Launcher.</p>
+            <div class="grid">
+                <div class="grid-item">
+                    <h3><i class="fa-brands fa-java"></i> Java Installed on System</h3>
+                    <p style="color:#b4b4b4">The Launcher requires Java to run Minecraft Java Edition. If you don't have Java already installed, the Launcher will ask you to install it automatically.</p>
+                </div>
+                <div class="grid-item">
+                    <h3><i class="fa-solid fa-memory"></i> Memory Requirements</h3>
+                    <p style="color:#b4b4b4">The Launcher requires at least 3GB of RAM, 8GB+ is recommended. You might run into issues with less than 3GB of RAM. Storage of 300MB+ is required.</p>
+                </div>
+                <div class="grid-item">
+                    <h3><i class="fa-solid fa-wifi"></i> Internet Connection</h3>
+                    <p style="color:#b4b4b4">The Launcher is communicating with Microsoft and partnered servers. To play online, you need to be connected to the Internet.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <img src="https://i.imgur.com/NxGqTQq.png" alt="KFX Development Logo">
+        <p style="color: #464646; font-size: 0.7em; margin-top: 2px;">Mystic Launcher is a product of KFX Development.</p>
+        <p style="margin-top: -5px;"><strong>KFX Development</strong> &copy; 2024 &ndash; All rights reserved</p>
+        <p style="color: #a7a7a7; font-size: 0.8em; margin-top: 5px;">We are not affiliated with Mojang Studios or Discord Inc.</p>
+    </footer>    
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    <script>
+        window.addEventListener('scroll', function() {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.scrollY > 100) {
+                backToTop.style.display = 'flex';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+        document.querySelector('.back-to-top').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
